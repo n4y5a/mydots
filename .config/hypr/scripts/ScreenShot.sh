@@ -1,40 +1,38 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# Screenshots scripts
+# ScreanShots
 
 iDIR="$HOME/.config/swaync/icons"
 sDIR="$HOME/.config/hypr/scripts"
 notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i ${iDIR}/picture.png"
 
 time=$(date "+%d-%b_%H-%M-%S")
-dir="$(xdg-user-dir)/Изображения/Снимки экрана"
+dir="$HOME/Изображения/Снимки экрана"
 file="Screenshot_${time}_${RANDOM}.png"
 
 active_window_class=$(hyprctl -j activewindow | jq -r '(.class)')
 active_window_file="Screenshot_${time}_${active_window_class}.png"
 active_window_path="${dir}/${active_window_file}"
 
-# notify and view screenshot
-notify_view() {
-    if [[ "$1" == "active" ]]; then
-        if [[ -e "${active_window_path}" ]]; then
-            ${notify_cmd_shot} "Screenshot of '${active_window_class}' Saved."
-            "${sDIR}/Sounds.sh" --screenshot
-        else
-            ${notify_cmd_shot} "Screenshot of '${active_window_class}' not Saved"
-        fi
-    elif [[ "$1" == "swappy" ]]; then
-		${notify_cmd_shot} "Screenshot Captured."
-    else
-        local check_file="$dir/$file"
-        if [[ -e "$check_file" ]]; then
-            ${notify_cmd_shot} "Screenshot Saved."
-            "${sDIR}/Sounds.sh" --screenshot
-        else
-            ${notify_cmd_shot} "Screenshot NOT Saved."
-        fi
-    fi
-}
+#notify_view() {
+#    if [[ "$1" == "active" ]]; then
+#        if [[ -e "${active_window_path}" ]]; then
+#            ${notify_cmd_shot} "Screenshot of '${active_window_class}' Saved."
+#            "${sDIR}/Sounds.sh" --screenshot
+#        else
+#            ${notify_cmd_shot} "Screenshot of '${active_window_class}' not Saved"
+#        fi
+#    elif [[ "$1" == "swappy" ]]; then
+#		${notify_cmd_shot} "Screenshot Captured."
+#    else
+#        local check_file="$dir/$file"
+#        if [[ -e "$check_file" ]]; then
+#            ${notify_cmd_shot} "Screenshot Saved."
+#            "${sDIR}/Sounds.sh" --screenshot
+#        else
+#            ${notify_cmd_shot} "Screenshot NOT Saved."
+#        fi
+#    fi
+#}
 
 
 
