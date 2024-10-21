@@ -1,8 +1,4 @@
-//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
-/* Waybar Modules */
-
 {
-// HYPRLAND WORKSPACES. CHOOSE as desired and place on waybar configs
 // CIRCLES Style
 "hyprland/workspaces": {
 	"active-only": false,
