@@ -1,0 +1,72 @@
+{
+"include": "~/.config/waybar/modules",
+"layer": "top",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 3,
+"margin-left": 8,
+"margin-right": 8,
+
+"modules-left": [
+	"hyprland/workspaces#katya",
+//	"custom/separator#dot-line",
+//	"group/motherboard",
+	"custom/playerctl",
+	"custom/playerlabel",
+	],
+
+"modules-center": [
+	//"custom/swaync",
+	"custom/cava_mviz",
+	"custom/separator#dot-line",
+	"clock",
+	"custom/separator#line",	
+	"custom/weather",	
+	], 
+
+"modules-right": [
+	"network#speed",
+	"custom/separator#line",
+	"tray",
+	"group/audio",
+	"custom/separator#line",
+	"custom/power",
+	],
+
+"custom/playerctl": {
+      "format": "{icon}",
+      "return-type": "json",
+      "max-length": 64,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "tooltip": false,
+//      "on-click": "playerctl previous",
+//      "on-click-middle": "playerctl play-pause",
+//      "on-click-right": "playerctl next",
+      "on-click": "playerctl play-pause",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'> 󰏥 </span>",
+        "Paused": "<span foreground='#928374'> 󰐌  </span>"
+           },
+      },
+
+"custom/playerlabel": {
+      "format": "<span>{}</span>",
+      "return-type": "json",
+      "max-length": 48,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+//      "on-click-middle": "playerctl play-pause",
+//      "on-click": "playerctl previous",
+//      "on-click-right": "playerctl next",
+      "on-click": "playerctl play-pause",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
+        "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
+            },
+      },
+}
+
+
